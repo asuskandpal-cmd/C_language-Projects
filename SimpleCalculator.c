@@ -27,7 +27,6 @@ int Divide(int x , int y){
   }
 
   return result;
- 
 }
 
 int Modulus(int x , int y){
@@ -41,7 +40,6 @@ int Modulus(int x , int y){
   }
 
   return result;
- 
 }
 
 long power (long x , long y){
@@ -50,19 +48,16 @@ if( y == 1){
   return x;
  }
 
- if( y <= 0){
+if( y <= 0){
   return 0;
 }
 
 int result = 1;
 
  for(int i = 0; i < y; i++){
-
   result *= x;
  }
-
  return result;
- 
 }
 
 int main(){ 
@@ -70,49 +65,37 @@ int main(){
     int Method = 0;
     long Num1 , Num2;
     long result = 0;
-    int has_result = 0;
-    
     char choice = 'n';
     
-    printf("\n!---------Simple Calculator---------!\n");
+    printf("\n!---------Simple Calculator-----------!\n");
 
      while(1) { 
 
-        if(has_result == 0 || choice == 'n' ){
         PrintMenu();
 
         printf("\n\nEnter Number of the operation : ");
         scanf("%d",&Method);             
-        getchar();
-     }      
-        if(has_error == 0 && has_result == 1 && choice == 'y'){
+        getchar();   
+     
+       if(Method < 1 || Method > 6){
+        printf("\n------Exiting Calculator------\n");
+        break;
+       }
 
-        PrintMenu();
+        if((has_error == 1 && choice == 'y') || (has_error == 0 && choice == 'y')){
+          
+            printf("\nPrevious result of operation : %ld\n",result);   
 
-            printf("\nPrevious result of operation : %ld",result);
-            
-            printf("\n\nEnter Number of the operation : ");
-            scanf("%d",&Method);
-            getchar();
-            
+             if(has_error == 0){
+             Num1 = result; 
+         }
+
             printf("Enter number : ");
             scanf("%ld",&Num2);
             getchar();
-
-            Num1 = result;
-    
-        }else if(has_error == 1 || (choice == 'y' && has_result == 1)){
-            
-           printf("Enter number : ");
-            scanf("%ld",&Num2);
-            getchar();
-
-            Num1 = result;
-
-            has_error = 0;
-            
-        }else{
-            printf("\nEnter first number : ");
+         }
+        else{
+        printf("\nEnter first number : ");
         scanf("%ld",&Num1);
         getchar();
 
@@ -120,62 +103,37 @@ int main(){
         scanf("%ld",&Num2);
         getchar();
         }
-   
-      //  if(has_result == 0 || choice == 'n') {
-      //      printf("\nEnter first number : ");
-      //   scanf("%ld",&Num1);
-      //   getchar();
-
-      //   printf("Enter second number : ");
-      //   scanf("%ld",&Num2);
-      //   getchar();
-      //  }
-
-       if(Method < 1 || Method > 6){
-       printf("\n------Exiting Calculator------\n");
-        break;
-       }
-       
+  
        switch(Method){
 
-        case 1://Add
-          result = Num1 + Num2;
+        case 1:result = Num1 + Num2;   
           break;
 
-        case 2://subtract
-         result = Num1 - Num2;
+        case 2:result = Num1 - Num2;
           break;
 
-        case 3://Divide
-         result = Divide(Num1,Num2);
+        case 3:result = Divide(Num1,Num2);
           break;
 
-        case 4://Multiply
-         result = Num1 * Num2;
+        case 4:result = Num1 * Num2;
           break;
 
-        case 5://Modulus
-         result = Modulus(Num1 , Num2);
+        case 5:result = Modulus(Num1 , Num2);
           break;
 
-        case 6://Power
-         result = power(Num1 , Num2);
+        case 6:result = power(Num1 , Num2);
          break;
-
        }
 
        if(has_error != 1){
 
        printf("\t\n--------->Result<---------\n%ld",result);
-       
-       has_result = 1;
-       has_error = 0;
 
        printf("\n\nDo you want to continue operations on result(enter 'y' for yes or 'n' for no) : ");
         scanf("%c",&choice);
         getchar();
         
-        if(has_result == 1 && choice != 'y' && choice !='n'){// valid choice input
+        if(has_error == 0 && choice != 'y' && choice !='n'){ // valid choice input
         
         while(1){
 
@@ -186,18 +144,19 @@ int main(){
         if(choice == 'y' || choice == 'n'){
             break;
         }
-         choice = ' ';
+          choice = ' ';
         }
-       }//validating choice input
+       }
+        //validating choice input
        }else{
 
-        printf("\nInvalid input for this operation, please try again with valid input\n");
-       
+        printf("\n!---Invalid input for this operation, please try again with valid input---!\n");
+          
        }
      }
 
- printf("\n \n");
+    printf("\n \n");
 
-    return 0;
+  return 0;
   }
 
