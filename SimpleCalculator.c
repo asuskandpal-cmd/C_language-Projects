@@ -86,10 +86,8 @@ int main(){
           
             printf("\nPrevious result of operation : %ld\n",result);   
 
-           if(has_error == 0){
             Num1 = result;
-           }
-
+           
             printf("Enter number : ");
             scanf("%ld",&Num2);
             getchar();
@@ -103,31 +101,39 @@ int main(){
         scanf("%ld",&Num2);
         getchar();
         }
+
+       long StoreResult = 0;
   
        switch(Method){
 
-        case 1:result = Num1 + Num2;   
+        case 1:StoreResult = Num1 + Num2;   
           break;
 
-        case 2:result = Num1 - Num2;
+        case 2:StoreResult = Num1 - Num2;
           break;
 
-        case 3:result = Divide(Num1,Num2);
+        case 3:StoreResult = Divide(Num1,Num2);
           break;
 
-        case 4:result = Num1 * Num2;
+        case 4:StoreResult = Num1 * Num2;
           break;
 
-        case 5:result = Modulus(Num1 , Num2);
+        case 5:StoreResult = Modulus(Num1 , Num2);
           break;
 
-        case 6:result = power(Num1 , Num2);
+        case 6:StoreResult = power(Num1 , Num2);
          break;
+       }
+
+       if(has_error == 0){
+         result = StoreResult;
        }
 
        if(has_error != 1){
 
        printf("\t\n--------->Result<---------\n%ld",result);
+
+       StoreResult = 1;
 
        printf("\n\nDo you want to continue operations on result(enter 'y' for yes or 'n' for no) : ");
         scanf("%c",&choice);
@@ -152,7 +158,6 @@ int main(){
 
         printf("\n!---Invalid input for this operation, please try again with valid input---!\n");
           has_error = 0;
-          
        }
      }
 
