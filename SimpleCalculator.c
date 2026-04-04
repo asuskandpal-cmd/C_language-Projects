@@ -82,13 +82,13 @@ int main(){
         break;
        }
 
-        if((has_error == 1 && choice == 'y') || (has_error == 0 && choice == 'y')){
+        if((has_error == 1 && choice == 'y') ||  choice == 'y'){
           
             printf("\nPrevious result of operation : %ld\n",result);   
 
-             if(has_error == 0){
-             Num1 = result; 
-         }
+           if(has_error == 0){
+            Num1 = result;
+           }
 
             printf("Enter number : ");
             scanf("%ld",&Num2);
@@ -151,7 +151,7 @@ int main(){
        }else{
 
         printf("\n!---Invalid input for this operation, please try again with valid input---!\n");
-          
+          has_error = 0;
        }
      }
 
