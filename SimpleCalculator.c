@@ -152,6 +152,7 @@ int main(){
 
         printf("\n!---Invalid input for this operation, please try again with valid input---!\n");
           has_error = 0;
+          
        }
      }
 
